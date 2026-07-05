@@ -1,119 +1,439 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <meta charset="UTF-8"/>
-    <title>Sukanta Ganguly</title>
-    <meta name="description" content="SG, Ph.D."/>
-    <meta name="keywords" content="blockchain, fintech, capital markets, think, execution"/>
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukanta Ganguly — Researcher, Entrepreneur, Engineer</title>
+    <meta name="description" content="Sukanta Ganguly, Ph.D. — Entrepreneur, network security, fintech, distributed systems, AI researcher."/>
+    <meta name="keywords" content="blockchain, fintech, capital markets, AI, retrieval-augmented generation, multimodal retrieval"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2b6cb0;
+            --accent: #e53e3e;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --radius: 8px;
+            --max-width: 860px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 16px;
+        }
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 1.5rem 2.5rem;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .site-header .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .site-header .contact {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .site-header .contact a {
+            color: #bee3f8;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(190, 227, 248, 0.5);
+            transition: opacity 0.2s;
+        }
+
+        .site-header .contact a:hover {
+            opacity: 1;
+        }
+
+        .last-update {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.85rem 1.1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        /* Abstract / Bio */
+        .abstract {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--primary-light);
+            padding: 1.5rem 1.75rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 3rem;
+        }
+
+        .abstract p {
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+
+        .abstract p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Publications */
+        .pub-group-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin: 1.5rem 0 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .pub-group-title:first-child {
+            margin-top: 0;
+        }
+
+        ul.pub-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.pub-list > li {
+            padding: 0.85rem 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-alt);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        ul.pub-list > li:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        ul.pub-list a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        ul.pub-list a:hover {
+            border-bottom-color: var(--primary-light);
+        }
+
+        .pub-authors {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .pub-venue {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            vertical-align: middle;
+        }
+
+        .pub-badge.new {
+            background: #38a169;
+        }
+
+        /* Patents */
+        ul.patent-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.patent-list > li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        ul.patent-list > li:last-child {
+            border-bottom: none;
+        }
+
+        ul.patent-list a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        ul.patent-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Academics */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .academic-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        .academic-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .academic-card .institution {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        footer .heart {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .site-header h1 {
+                font-size: 1.6rem;
+            }
+
+            section h2 {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                gap: 0;
+            }
+
+            nav a {
+                padding: 0.75rem 0.75rem;
+                font-size: 0.82rem;
+            }
+
+            main {
+                padding: 1.5rem 1rem 3rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<h1>My Home base.., uhh?    </h1>
-<p class="author">
-    SG, Royal Bengal Tiger (they say...) <br>
-    <a href="https://twitter.com/AutarkyFi">[Twitter]</a><br>
-    Email: sukantag (at) gmail (dot) com <br> Last Update: June 9, 2023
-</p>
 
+<header class="site-header">
+    <h1>Sukanta Ganguly</h1>
+    <p class="tagline">Royal Bengal Tiger (they say…) — Entrepreneur · Researcher · Engineer</p>
+    <p class="contact">
+        <a href="https://twitter.com/AutarkyFi">Twitter</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/sukantag/">LinkedIn</a> &nbsp;·&nbsp;
+        Email: sukantag (at) gmail (dot) com
+    </p>
+    <p class="last-update">Last Update: July 2026</p>
+</header>
 
-<div class="abstract">
-    <h2>Abstract</h2>
-    <p style="text-align:left;">
-        I am an entrepreneur, a network security, fintech, distributed systems disciple. Love Capital Markets and working on global disruption for the greater good. 
-        Level the playing field for all, not just for the blue eyed ones. 
-        I enjoy what I do, love new challenges and always open to a new one. I also thrive in chaos. 
-        Love AI, learnt quite a bit and learning more as we speak.
-
-    <p style="text-align:left;">Love working with people, we don't have to work for the same company, we can collaborate. 
-        Ping me, bring your skills and opportunities and we can explore building something bigger and better for all!</p>
-</div>
-
-
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#patents">Patents</a></li>
+        <li><a href="#academics">Academics</a></li>
+    </ul>
+</nav>
 
 <main>
-    <article>
-        <h2 id="inventions">Patents</h2>
-        <!-- Inventions -->
+    <section id="about">
+        <h2>About</h2>
+        <div class="abstract">
+            <p>I am an entrepreneur and a disciple of network security, fintech, and distributed systems. I love capital markets and work on global disruption for the greater good — leveling the playing field for everyone, not just the privileged few.</p>
+            <p>I enjoy what I do, love new challenges, and thrive in chaos. I'm deeply passionate about AI — I've learned quite a bit and continue learning more every day.</p>
+            <p>I love working with people. We don't have to work for the same company; we can collaborate. Ping me — bring your skills and opportunities, and let's explore building something bigger and better for all.</p>
+        </div>
+    </section>
 
-        <ul>
+    <section id="publications">
+        <h2>Publications</h2>
+
+        <h3 class="pub-group-title">Recent Research Papers <span class="pub-badge new">New</span></h3>
+        <ul class="pub-list">
             <li>
-                <a href="https://patents.google.com/patent/US20160042575A1/en?inventor=Sukanta+Ganguly">Automated facility access and payment processing systems and methods </a><br>
+                <a href="https://arxiv.org/abs/2605.24938" target="_blank" rel="noopener">Your Embedding Model is SMARTer Than You Think</a>
+                <div class="pub-authors">Jianrui Zhang, Hyun Jung Lee, <strong>Sukanta Ganguly</strong>, Tae-Eui Kam, Donghyun Kim, Yong Jae Lee</div>
+                <div class="pub-venue">arXiv:2605.24938 — A plug-and-play framework (SMART) that unlocks latent multi-vector capabilities in standard single-vector retrievers via late-interaction over frozen hidden states, improving multimodal retrieval across diverse modalities.</div>
             </li>
-
             <li>
-                <a href="https://patents.google.com/patent/US20190228472A1/en?inventor=Sukanta+Ganguly">System and method for quantifiable categorization of candidates for asset allocation </a><br>
+                <a href="https://arxiv.org/abs/2602.07739" target="_blank" rel="noopener">HypRAG: Hyperbolic Dense Retrieval for Retrieval Augmented Generation</a>
+                <div class="pub-authors">Hiren Madhu, Ngoc Bui, Ali Maatouk, Leandros Tassiulas, Smita Krishnaswamy, Menglin Yang, <strong>Sukanta Ganguly</strong>, Kiran Srinivasan, Rex Ying</div>
+                <div class="pub-venue">arXiv:2602.07739 — Introduces hyperbolic dense retrieval in the Lorentz model, achieving up to 29% gains over Euclidean baselines in context and answer relevance for RAG systems.</div>
             </li>
-
             <li>
-                <a href="https://patents.google.com/patent/US11640640B2/en?inventor=Sukanta+Ganguly">Systems and methods for allocating assets to directed and interest-based participants </a><br>
-            </li>
-
-            <li>
-                <a href="https://patents.google.com/patent/US6629132B1/en?inventor=Sukanta+Ganguly">Predicate indexing of data stored in a computer with application to indexing cached data </a><br>
-            </li>
-
-            <li>
-                <a href="https://patents.google.com/patent/US6345266B1/en?inventor=Sukanta+Ganguly">Predicate indexing for locating objects in a distributed directory </a><br>
-            </li>
-
-            <li>
-                <a href="https://patents.google.com/patent/US11640639B2/en?inventor=Sukanta+Ganguly">Systems and methods for allocating fractional shares of a public offering </a><br>
-            </li>
-
-            <li>
-                <a href="https://patents.google.com/patent/US20220027991A1/en?inventor=Sukanta+Ganguly">Systems and methods for tracking and reporting user interactions with data objects </a><br>
-            </li>
-
-        </ul>
-
-
-        <h2 id="publications">Publications</h2>
-        <ul>
-            <li>Books co-authored: CORBA Dev Guide 3.0. IDG Publication, May 1998</li>
-            <li>Books co-authored: Connecting JavaBeans with Infobus. Wiley Publ, Nov 1998</li>
-            <li>Contributor, RFC 5043; Stream Control Transmission Protocol (SCTP) Direct Data Placement (DDP) Adaptation, Oct, 2007</li>
-            <li>Society for Design and Process Science, IDPT Taiwan 2008, June: Information Extraction from Distributed Sources on the Web</li>
-            <li>Society for Design and Process Science, IDPT Taiwan 2008, June: Fast Event Based Programming Model.</li>
-            <li>Mary Ann Liebert (Telemedicine & E-Health Journal), NYC Summer 2009: Sharing Information and Data across Heterogeneous Systems/li>
-            <li>Society for Design & Process Science, IDPT AL, U.S 2009, November: A Quantitative Index for Software Usability in Trustworthy Computing</li>
-            <li>Society for Design and Process Science, IDPT Alabama, U.S 2009, November: Semantic Management of Privacy Policies in Social Networking</li>
-            <li>PhD Thesis, Texas Tech University, June 2009: Constraint Based Domain Aware Information Retrieval System</li>
-            <li>International Journal of Advanced Intelligence Paradigm, IJAIP Jan, 2011, November: CADRA: Content Aware Data Retrieval Architecture</li>
-            <li>Significance, International; Website of the Royal Statistical Society and the American Statistical Association, July 2012: A New Metric for Usability in Trustworthy Computing of Cyber-systems</li>
-        </ul>
-
-        <ul>
-            <li>
-                <a href="https://www.linkedin.com/in/sukantag/"> Entrepreneur at large </a> <br>
+                <a href="https://arxiv.org/pdf/2602.07125" target="_blank" rel="noopener">Reasoning-Augmented Representations for Multimodal Retrieval</a>
+                <div class="pub-authors">Jianrui Zhang, Anirudh Sundara Rajan, Brandon Han, Soochahn Lee, <strong>Sukanta Ganguly</strong>, Yong Jae Lee</div>
+                <div class="pub-venue">arXiv:2602.07125 — A data-centric framework that externalizes reasoning before retrieval, yielding consistent gains on M-BEIR for universal multimodal retrieval.</div>
             </li>
         </ul>
 
-        <h2 id="education">Academics</h2>
-        <ul>
-            <li>
-                Doctorate in Engineering <br>
-                Texas Tech University, TX
-            </li>
-            <li>
-                MBA Finance <br>
-                Westminister College, UT <br>
-            </li>
+        <h3 class="pub-group-title">Books &amp; Technical Contributions</h3>
+        <ul class="pub-list">
+            <li><strong>Books co-authored:</strong> CORBA Dev Guide 3.0. IDG Publication, May 1998</li>
+            <li><strong>Books co-authored:</strong> Connecting JavaBeans with Infobus. Wiley Publ, Nov 1998</li>
+            <li><strong>Contributor:</strong> RFC 5043 — Stream Control Transmission Protocol (SCTP) Direct Data Placement (DDP) Adaptation, Oct 2007</li>
         </ul>
-    </article>
+
+        <h3 class="pub-group-title">Conference Papers &amp; Journal Articles</h3>
+        <ul class="pub-list">
+            <li>Society for Design and Process Science, IDPT Taiwan 2008, June: <em>Information Extraction from Distributed Sources on the Web</em></li>
+            <li>Society for Design and Process Science, IDPT Taiwan 2008, June: <em>Fast Event Based Programming Model</em></li>
+            <li>Mary Ann Liebert (Telemedicine &amp; E-Health Journal), NYC Summer 2009: <em>Sharing Information and Data across Heterogeneous Systems</em></li>
+            <li>Society for Design &amp; Process Science, IDPT AL, U.S. 2009, November: <em>A Quantitative Index for Software Usability in Trustworthy Computing</em></li>
+            <li>Society for Design and Process Science, IDPT Alabama, U.S. 2009, November: <em>Semantic Management of Privacy Policies in Social Networking</em></li>
+            <li><strong>PhD Thesis,</strong> Texas Tech University, June 2009: <em>Constraint Based Domain Aware Information Retrieval System</em></li>
+            <li>International Journal of Advanced Intelligence Paradigm, IJAIP, Jan 2011: <em>CADRA: Content Aware Data Retrieval Architecture</em></li>
+            <li>Significance (Royal Statistical Society &amp; American Statistical Association), July 2012: <em>A New Metric for Usability in Trustworthy Computing of Cyber-systems</em></li>
+        </ul>
+    </section>
+
+    <section id="patents">
+        <h2>Patents</h2>
+        <ul class="patent-list">
+            <li><a href="https://patents.google.com/patent/US20160042575A1/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Automated facility access and payment processing systems and methods</a></li>
+            <li><a href="https://patents.google.com/patent/US20190228472A1/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">System and method for quantifiable categorization of candidates for asset allocation</a></li>
+            <li><a href="https://patents.google.com/patent/US11640640B2/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Systems and methods for allocating assets to directed and interest-based participants</a></li>
+            <li><a href="https://patents.google.com/patent/US6629132B1/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Predicate indexing of data stored in a computer with application to indexing cached data</a></li>
+            <li><a href="https://patents.google.com/patent/US6345266B1/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Predicate indexing for locating objects in a distributed directory</a></li>
+            <li><a href="https://patents.google.com/patent/US11640639B2/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Systems and methods for allocating fractional shares of a public offering</a></li>
+            <li><a href="https://patents.google.com/patent/US20220027991A1/en?inventor=Sukanta+Ganguly" target="_blank" rel="noopener">Systems and methods for tracking and reporting user interactions with data objects</a></li>
+        </ul>
+    </section>
+
+    <section id="academics">
+        <h2>Academics</h2>
+        <div class="academics-grid">
+            <div class="academic-card">
+                <h3>Doctorate in Engineering</h3>
+                <p class="institution">Texas Tech University, TX</p>
+            </div>
+            <div class="academic-card">
+                <h3>MBA — Finance</h3>
+                <p class="institution">Westminster College, UT</p>
+            </div>
+        </div>
+    </section>
 </main>
 
-</body>
-
-<hr>
-
 <footer>
-    <p>Made with love</a>
-        &#10084; &#10084;</p>
+    <p>Made with <span class="heart">❤</span> · <a href="https://www.linkedin.com/in/sukantag/" style="color:var(--primary-light); text-decoration:none;">Entrepreneur at large</a></p>
 </footer>
 
+</body>
 </html>
